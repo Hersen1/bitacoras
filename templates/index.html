@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUERPO HEROICO DE BOMBEROS DE LEON GTO</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <img src="/static/logo.png" alt="Logo del Cuerpo Heroico de Bomberos" class="logo">
+            <h1>CUERPO HEROICO DE BOMBEROS DE LEON GTO</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="menu-item">Registrar</a></li>
+                    <li><a href="consultar.html" class="menu-item">Consultar</a></li>
+                    <li><a href="generar_excel.html" class="menu-item">Generar Excel</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenedor del formulario -->
+    <div class="main-container">
+        <div class="form-selection">
+            <h2 id="titulos">Seleccionar Bitácora</h2>
+            <select id="bitacora" name="bitacora" onchange="showForm()">
+                <option value="">Seleccione una bitácora...</option>
+                <option value="bitacora_parte">BITACORA DE REGISTRO DE PARTE</option>
+                <option value="bitacora_unidades">BITACORA DE REGISTRO ENTRADA Y SALIDA DE UNIDADES</option>
+                <option value="checklist_diario">CHECK-LIST DIARIO DE UNIDADES MÓVILES</option>
+                <option value="comprobante_gas">COMPROBANTE DE ENTREGA DE TANQUE DE GAS POR RETENCIÓN DE FUGA</option>
+                <option value="atencion_pre_hospitalaria">REGISTRO DE ATENCIÓN PRE-HOSPITALARIA</option>
+                <option value="registro_emergencias">REGISTRO DE EMERGENCIAS</option>
+                <option value="resumen_estaciones">RESUMEN DE ACTIVIDADES DEL PERSONAL EN LAS ESTACIONES</option>
+                <option value="resumen_novedades">RESUMEN DIARIO DE NOVEDADES</option>
+                <option value="solicitud_permiso">SOLICITUD DE PERMISO</option>
+                <option value="boleta_arresto">BOLETA DE ARRESTO</option>
+            </select>
+            <button id="submitBtn" class="hidden" type="submit">Registrar</button>
+        </div>
+
+        <div class="form-container" id="form-container">
+            <div id="form-registro-emergencia" class="hidden">
+                <h3>Registro de Emergencia</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="folio911">Folio 911:</label>
+                        <input type="text" id="folio911" name="folio911" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="folio">Folio:</label>
+                        <input type="text" id="folio" name="folio" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="nombre_reportante">Nombre del Reportante:</label>
+                        <input type="text" id="nombre_reportante" name="nombre_reportante" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="direccion">Calle y Número:</label>
+                        <input type="text" id="direccion" name="direccion" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="entre_calles">Entre qué calles:</label>
+                        <input type="text" id="entre_calles" name="entre_calles" required>
+                    </div>
+            
+                    <div class="form-group flex-group">
+                        <div class="flex-item">
+                            <label for="colonia">Colonia:</label>
+                            <input type="text" id="colonia" name="colonia" required>
+                        </div>
+                        <div class="flex-item">
+                            <label for="telefono">Telefono:</label>
+                            <input type="text" id="telefono" name="telefono" required>
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="emergencia">¿Cuál es la emergencia?</label>
+                        <textarea id="emergencia" name="emergencia" rows="4" required></textarea>
+                    </div>
+            
+                    <fieldset>
+                        <legend>Tipo de emergencia:</legend>
+                        <label for="falsa_alarma">
+                            <input type="radio" id="falsa_alarma" name="tipo_emergencia" value="Falsa alarma" required> Falsa alarma
+                        </label><br>
+                        <label for="cancelacion">
+                            <input type="radio" id="cancelacion" name="tipo_emergencia" value="Cancelación" required> Cancelación
+                        </label><br>
+                        <label for="salida_sin_intervencion">
+                            <input type="radio" id="salida_sin_intervencion" name="tipo_emergencia" value="Salida sin intervención" required> Salida sin intervención
+                        </label>
+                    </fieldset>
+            
+                    <div class="form-group flex-group">
+                        <div class="flex-item">
+                            <label for="kilometraje_inicial">Kilometraje inicial:</label>
+                            <input type="number" id="kilometraje_inicial" name="kilometraje_inicial" required>
+                        </div>
+                        <div class="flex-item">
+                            <label for="kilometraje_final">Kilometraje final:</label>
+                            <input type="number" id="kilometraje_final" name="kilometraje_final" required>
+                        </div>
+                    </div>
+            
+                    <fieldset>
+                        <legend>¿Es una rectificación de la emergencia?</legend>
+                        <label for="rectificacion_si">
+                            <input type="radio" id="rectificacion_si" name="rectificacion" value="Sí" required> Sí
+                        </label><br>
+                        <label for="rectificacion_no">
+                            <input type="radio" id="rectificacion_no" name="rectificacion" value="No" required> No
+                        </label>
+                    </fieldset>
+            
+                    <button type="submit">Registrar Emergencia</button>
+                </form>
+            </div>
+            <div id="form-salida-entrada-unidades" class="hidden">
+                <h3>Salida y Entrada de Unidades</h3>
+                <form>
+                    <div class="form-group flex-group">
+                        <div class="flex-item">
+                            <label for="sector">Sector:</label>
+                            <select id="sector" name="sector" required>
+                                <option value="0">Selecciona un sector...</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+            
+                        <div class="flex-item">
+                        <label for="estacion">Estación:</label>
+                        <select id="estacion" name="estacion" required>
+                            <option value="1">Seleccione una estación...</option>
+                            <option value="central">Central</option>
+                            <option value="bomberos1">Bomberos 1</option>
+                            <option value="bomberos2">Bomberos 2</option>
+                            <option value="bomberos3">Bomberos 3</option>
+                            <option value="bomberos4">Bomberos 4</option>
+                            <option value="bomberos5">Bomberos 5</option>
+                            <option value="bomberos6">Bomberos 6</option>
+                            <option value="bomberos7">Bomberos 7</option>
+                            <option value="bomberos8">Bomberos 8</option>
+                            <option value="bomberos9">Bomberos 9</option>
+                        </select>
+                    </div>
+            
+                    <div class="flex-item">
+                        <label for="turno">Turno:</label>
+                        <select id="turno" name="turno" required>
+                            <option value="1">Seleccione un turno...</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                        </select>
+                    </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="folio_emergencia">Folio de Emergencia:</label>
+                        <input type="text" id="folio_emergencia" name="folio_emergencia" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="tipo_emergencia">Tipo de Emergencia:</label>
+                        <input type="text" id="tipo_emergencia" name="tipo_emergencia" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="unidad_numero">N° Unidad:</label>
+                        <input type="text" id="unidad_numero" name="unidad_numero" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="tipo_unidad">Tipo de Unidad:</label>
+                        <input type="text" id="tipo_unidad" name="tipo_unidad" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="estado_servicio">Estado del Servicio:</label>
+                        <input type="text" id="estado_servicio" name="estado_servicio" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="motivo_comision">Motivo de Comisión:</label>
+                        <input type="text" id="motivo_comision" name="motivo_comision" required>
+                    </div>
+            
+                    <div class="form-group flex-group">
+                        <div class="flex-item">
+                            <label for="hora_salida">Hora de Salida:</label>
+                            <input type="time" id="hora_salida" name="hora_salida" required>
+                        </div>
+                        <div class="flex-item">
+                            <label for="hora_en_lugar">Hora en el Lugar:</label>
+                            <input type="time" id="hora_en_lugar" name="hora_en_lugar" required>
+                        </div>
+                        <div class="flex-item">
+                            <label for="hora_estacion">Hora en la Estación:</label>
+                            <input type="time" id="hora_estacion" name="hora_estacion" required>
+                        </div>
+                    </div>
+            
+                    <button type="submit">Registrar Salida/Entrada</button>
+                </form>
+            </div>
+            
+
+            <!-- Aquí puedes agregar otros formularios según las opciones seleccionadas -->
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        // Función para mostrar el formulario correspondiente
+        function showForm() {
+            // Ocultar todos los formularios
+            const forms = document.querySelectorAll('.form-container > div');
+            forms.forEach(form => form.classList.add('hidden'));
+
+            // Obtener el tipo de formulario seleccionado
+            const selectedForm = document.getElementById('bitacora').value;
+
+            // Mostrar el formulario correspondiente
+            if (selectedForm === 'registro_emergencias') {
+                document.getElementById('form-registro-emergencia').classList.remove('hidden')}
+            else if (selectedForm === 'bitacora_unidades') {
+                document.getElementById('form-salida-entrada-unidades').classList.remove('hidden');
+            }
+            // Aquí puedes agregar más condiciones para otros formularios si es necesario
+        }
+    </script>
+</body>
+</html>

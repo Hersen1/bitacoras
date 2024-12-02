@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #3f4480; 
+    color: white; 
+}
+
+header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #1e203f;
+    padding: 10px 20px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+}
+
+.logo {
+    max-width: 120px;
+    height: auto;
+    margin-right: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0;
+    color: white;
+    text-align: center;
+    flex-grow: 1; /* Esto hace que el título ocupe el espacio disponible */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background-color: #610f0f;
+    color: #ddd;
+}
+
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.form-selection {
+    width: 30%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    text-align: center;
+    color: white;
+}
+
+select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkred;
+}
+
+button.hidden {
+    display: none;
+}
+
+/* Estilo para el formulario */
+.form-container {
+    width: 65%;
+    background-color: white; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    color: #000; /* Color del texto negro */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 90%; /* Los campos se expanden para ocupar todo el ancho disponible */
+    margin-bottom: 15px;
+}
+
+textarea {
+    width: 100%; /* Asegura que el textarea tenga el mismo tamaño que los demás campos */
+}
+
+.flex-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.flex-item {
+    flex: 1;
+}
+
+fieldset {
+    border: none;
+    margin-bottom: 15px;
+}
+
+legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #119126;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: flex-start; /* Alinea el botón al principio del formulario */
+}
+
+button:hover {
+    background-color: #0d520d;
+}
+
+@media (max-width: 600px) {
+    .form-container {
+        width: 90%; /* Aumenta el ancho en pantallas pequeñas */
+        padding: 15px;
+    }
+
+    .flex-group {
+        flex-direction: column;
+        gap: 10px; /* Reduce el espacio entre los elementos cuando hay poco espacio */
+    }
+
+    .flex-item {
+        width: 100%;
+    }
+}
+
+.hidden {
+    display: none;
+    
+}
+h3 {
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
