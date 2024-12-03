@@ -15,9 +15,9 @@ DB_PASSWORD = "B0mb3r0s.*2024"  # Contraseña del usuario
 def get_db_connection():
     conn = psycopg2.connect(
         host=os.getenv('DB_HOST', 'localhost'),  # Usa la variable de entorno DB_HOST
-        database=os.getenv('DB_NAME', DB_NAME),
-        user=os.getenv('DB_USER', DB_USER),
-        password=os.getenv('DB_PASSWORD', DB_PASWORD)
+        database=os.getenv('DB_NAME', 'FLOTILLA_VEHICULOS'),
+        user=os.getenv('DB_USER', 'pbl_admin'),
+        password=os.getenv('DB_PASSWORD', 'B0mb3r0s.*2024')
     )
     return conn
 
